@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121417"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- ── Header ────────────────────────────────────────────────────── -->
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Quote Filosofis"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:id="@+id/subtitle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="20dp"
+            android:text="Kebijaksanaan harian · filsafat di saku"
+            android:textColor="#88FFFFFF"
+            android:textSize="13sp" />
+
+        <!-- ── Language card ──────────────────────────────────────────────── -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#1E2227"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bahasa / Language"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="12dp" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/lang_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_lang_id"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🇮🇩  Indonesia"
+                        android:textColor="#DDFFFFFF"
+                        app:strokeColor="#334DB6AC"
+                        app:cornerRadius="12dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_lang_en"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🇬🇧  English"
+                        android:textColor="#DDFFFFFF"
+                        app:strokeColor="#334DB6AC"
+                        app:cornerRadius="12dp" />
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ── Notification card ─────────────────────────────────────────── -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#1E2227"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/label_notif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOTIFIKASI"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/interval_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notifikasi setiap: 1 jam"
+                    android:textColor="#DDFFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/interval_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="0"
+                    android:valueTo="6"
+                    android:stepSize="1"
+                    android:value="2"
+                    app:thumbColor="#4DB6AC"
+                    app:trackColorActive="#4DB6AC"
+                    app:trackColorInactive="#334DB6AC"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:id="@+id/label_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MODE"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="8dp" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/mode_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_mode_normal"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Normal"
+                        android:textSize="12sp"
+                        android:textColor="#DDFFFFFF"
+                        app:strokeColor="#334DB6AC"
+                        app:cornerRadius="12dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_mode_lockscreen"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Lockscreen"
+                        android:textSize="12sp"
+                        android:textColor="#DDFFFFFF"
+                        app:strokeColor="#334DB6AC"
+                        app:cornerRadius="12dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_mode_silent"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Senyap"
+                        android:textSize="12sp"
+                        android:textColor="#DDFFFFFF"
+                        app:strokeColor="#334DB6AC"
+                        app:cornerRadius="12dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_mode_off"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Mati"
+                        android:textSize="12sp"
+                        android:textColor="#DDFFFFFF"
+                        app:strokeColor="#334DB6AC"
+                        app:cornerRadius="12dp" />
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ── Widget card ───────────────────────────────────────────────── -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#1E2227"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/label_widget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WIDGET"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/alpha_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transparansi latar: 75%"
+                    android:textColor="#DDFFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/alpha_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="0"
+                    android:valueTo="4"
+                    android:stepSize="1"
+                    android:value="1"
+                    app:thumbColor="#4DB6AC"
+                    app:trackColorActive="#4DB6AC"
+                    app:trackColorInactive="#334DB6AC" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ── School card ───────────────────────────────────────────────── -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="#1E2227"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/label_school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ALIRAN FILOSOFI"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.08"
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="10dp" />
+
+                <CheckBox android:id="@+id/cb_optimisme"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Optimisme" android:textColor="#DDFFFFFF"
+                    android:buttonTint="#4DB6AC" android:checked="true" android:layout_marginBottom="4dp"/>
+
+                <CheckBox android:id="@+id/cb_stoisisme"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Stoisisme" android:textColor="#DDFFFFFF"
+                    android:buttonTint="#4DB6AC" android:checked="true" android:layout_marginBottom="4dp"/>
+
+                <CheckBox android:id="@+id/cb_nihilisme"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Nihilisme" android:textColor="#DDFFFFFF"
+                    android:buttonTint="#4DB6AC" android:checked="true" android:layout_marginBottom="4dp"/>
+
+                <CheckBox android:id="@+id/cb_eksistensialisme"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Eksistensialisme" android:textColor="#DDFFFFFF"
+                    android:buttonTint="#4DB6AC" android:checked="true" android:layout_marginBottom="4dp"/>
+
+                <CheckBox android:id="@+id/cb_absurdisme"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Absurdisme" android:textColor="#DDFFFFFF"
+                    android:buttonTint="#4DB6AC" android:checked="true" android:layout_marginBottom="4dp"/>
+
+                <CheckBox android:id="@+id/cb_timur"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Timur" android:textColor="#DDFFFFFF"
+                    android:buttonTint="#4DB6AC" android:checked="true"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ── Action buttons ────────────────────────────────────────────── -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Simpan pengaturan"
+            android:textColor="#121417"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:backgroundTint="#4DB6AC"
+            app:cornerRadius="50dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Tampilkan quote sekarang"
+            android:textColor="#4DB6AC"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:strokeColor="#4DB6AC"
+            app:cornerRadius="50dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="Bagikan quote"
+            android:textColor="#4DB6AC"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:strokeColor="#4DB6AC"
+            app:cornerRadius="50dp" />
+
+    </LinearLayout>
+</ScrollView>
