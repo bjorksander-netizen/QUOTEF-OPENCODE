@@ -44,6 +44,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cbAbsurdisme: CheckBox
     private lateinit var cbTimur: CheckBox
 
+    private lateinit var labelFontSize: TextView
+    private lateinit var fontSizeToggle: MaterialButtonToggleGroup
+    private lateinit var btnFontSmall: MaterialButton
+    private lateinit var btnFontMedium: MaterialButton
+    private lateinit var btnFontLarge: MaterialButton
+
+    private lateinit var labelShareTheme: TextView
+    private lateinit var shareThemeToggle: MaterialButtonToggleGroup
+    private lateinit var btnThemeBasic: MaterialButton
+    private lateinit var btnThemeRandom: MaterialButton
+
     private lateinit var btnSave: MaterialButton
     private lateinit var btnShow: MaterialButton
     private lateinit var btnShare: MaterialButton
@@ -102,6 +113,17 @@ class MainActivity : AppCompatActivity() {
         cbAbsurdisme        = findViewById(R.id.cb_absurdisme)
         cbTimur             = findViewById(R.id.cb_timur)
 
+        labelFontSize       = findViewById(R.id.label_font_size)
+        fontSizeToggle      = findViewById(R.id.font_size_toggle)
+        btnFontSmall        = findViewById(R.id.btn_font_small)
+        btnFontMedium       = findViewById(R.id.btn_font_medium)
+        btnFontLarge        = findViewById(R.id.btn_font_large)
+
+        labelShareTheme     = findViewById(R.id.label_share_theme)
+        shareThemeToggle    = findViewById(R.id.share_theme_toggle)
+        btnThemeBasic       = findViewById(R.id.btn_theme_basic)
+        btnThemeRandom      = findViewById(R.id.btn_theme_random)
+
         btnSave             = findViewById(R.id.btn_save)
         btnShow             = findViewById(R.id.btn_show)
         btnShare            = findViewById(R.id.btn_share)
@@ -138,6 +160,18 @@ class MainActivity : AppCompatActivity() {
         cbEksistensialisme.isChecked = "Eksistensialisme" in active
         cbAbsurdisme.isChecked       = "Absurdisme"       in active
         cbTimur.isChecked            = "Timur"            in active
+
+        // Share font size
+        val fontSize = Prefs.getShareFontSize(this)
+        fontSizeToggle.check(when (fontSize) {
+            0 -> R.id.btn_font_small
+            2 -> R.id.btn_font_large
+            else -> R.id.btn_font_medium
+        })
+
+        // Share theme
+        val shareTheme = Prefs.getShareTheme(this)
+        shareThemeToggle.check(if (shareTheme == "random") R.id.btn_theme_random else R.id.btn_theme_basic)
     }
 
     private fun setupListeners() {
@@ -189,6 +223,13 @@ class MainActivity : AppCompatActivity() {
             btnSave.text      = "Save settings"
             btnShow.text      = "Show quote now"
             btnShare.text     = "Share quote"
+            labelFontSize.text = "FONT SIZE"
+            btnFontSmall.text  = "Small"
+            btnFontMedium.text = "Medium"
+            btnFontLarge.text  = "Large"
+            labelShareTheme.text  = "CARD THEME"
+            btnThemeBasic.text    = "Basic"
+            btnThemeRandom.text   = "Random"
         } else {
             titleText.text    = "Quote Filosofis"
             subtitleText.text = "Kebijaksanaan harian · filsafat di saku"
@@ -211,6 +252,13 @@ class MainActivity : AppCompatActivity() {
             btnSave.text      = "Simpan pengaturan"
             btnShow.text      = "Tampilkan quote sekarang"
             btnShare.text     = "Bagikan quote"
+            labelFontSize.text = "UKURAN TULISAN"
+            btnFontSmall.text  = "Kecil"
+            btnFontMedium.text = "Sedang"
+            btnFontLarge.text  = "Besar"
+            labelShareTheme.text  = "TEMA WARNA"
+            btnThemeBasic.text    = "Basic"
+            btnThemeRandom.text   = "Random"
         }
     }
 
@@ -240,6 +288,18 @@ class MainActivity : AppCompatActivity() {
         if (cbAbsurdisme.isChecked)       schools += "Absurdisme"
         if (cbTimur.isChecked)            schools += "Timur"
         Prefs.setActiveSchools(this, schools)
+
+        // Share font size
+        val fontSize = when (fontSizeToggle.checkedButtonId) {
+            R.id.btn_font_small -> 0
+            R.id.btn_font_large -> 2
+            else -> 1
+        }
+        Prefs.setShareFontSize(this, fontSize)
+
+        // Share theme
+        val shareTheme = if (shareThemeToggle.checkedButtonId == R.id.btn_theme_random) "random" else "basic"
+        Prefs.setShareTheme(this, shareTheme)
 
         // Reschedule & update widget
         QuoteWorker.schedule(this)

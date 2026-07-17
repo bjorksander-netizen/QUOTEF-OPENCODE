@@ -46,4 +46,14 @@ object Prefs {
     fun getLastQuoteIndex(c: Context): Int = sp(c).getInt("last_quote_index", -1)
     fun setLastQuoteIndex(c: Context, v: Int) =
         sp(c).edit().putInt("last_quote_index", v).apply()
+
+    // ── Share card font size: 0=small, 1=medium, 2=large ─────────────────────
+    fun getShareFontSize(c: Context): Int = sp(c).getInt("share_font_size", 1)
+    fun setShareFontSize(c: Context, v: Int) =
+        sp(c).edit().putInt("share_font_size", v.coerceIn(0, 2)).apply()
+
+    // ── Share card theme: "basic" | "random" ──────────────────────────────────
+    fun getShareTheme(c: Context): String = sp(c).getString("share_theme", "basic") ?: "basic"
+    fun setShareTheme(c: Context, v: String) =
+        sp(c).edit().putString("share_theme", v).apply()
 }
